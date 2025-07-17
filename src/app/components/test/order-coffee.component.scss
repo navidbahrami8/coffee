@@ -1,0 +1,50 @@
+.header {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+.form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .button-container {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    justify-items: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin-right: 70vw;
+
+    .button {
+      width: 100px;
+      height: 34px;
+      background: deepskyblue;
+      border: solid 1px #b2a9a9;
+      border-radius: 4px;
+      cursor: pointer;
+
+      &:hover {
+        border: 1px solid #3fbd1c;
+        background: white;
+
+        &:active {
+          border: solid 2px #da4673;
+        }
+      }
+    }
+  }
+}
+
+.example-full-width {
+  width: 45%;
+}

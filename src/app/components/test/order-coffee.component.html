@@ -1,1 +1,22 @@
-<p>test works!</p>
+<div class="header">
+  <h1>COFFEE</h1>
+</div>
+<form [formGroup]="form" class="form" (ngSubmit)="save()" >
+  <div class="row">
+    <mat-form-field appearance="outline">
+      <mat-label>Coffee Name</mat-label>
+      <mat-select [formControl]="form.name">
+        <mat-option>Clear</mat-option>
+        <mat-option value="espresso">cup of Espresso Coffee</mat-option>
+        <mat-option value="French">cup of French Coffee</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Count</mat-label>
+      <input [formControl]="form.count" matInput type="number" placeholder="count" value="0">
+    </mat-form-field>
+  </div>
+  <div class="button-container">
+    <button class="button" type="submit">Save</button>
+  </div>
+</form>
