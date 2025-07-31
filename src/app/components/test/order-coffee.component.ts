@@ -1,10 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {CoffeeForm} from './order-coffee.model';
+import {TestService} from './services/test.service';
+import {firstValueFrom} from 'rxjs';
 
 /* 🚨 Tools You Need  🚨*/
 /* 🔥 For Beginner 🔥*/
@@ -35,10 +37,14 @@ import {CoffeeForm} from './order-coffee.model';
 export class OrderCoffeeComponent implements OnInit {
   // form!: FormGroup
   form: CoffeeForm = new CoffeeForm()
-
+  /*do not use like that ⛔*/
+  // private service = new TestService()
+  /*use like that 🎯*/
+  private api = inject(TestService)
   /* Task_2🚨 = What is The Constructor ? You should search🔍 and leave me a comment.! ⚠️ */
-  constructor() {
-  }
+  // constructor(private api: TestService) {
+  // }
+
 
   /* 🚨 for beginner 🚨 */
   /*  📌Lifecycle📌  hooks ✅*/
@@ -86,9 +92,15 @@ export class OrderCoffeeComponent implements OnInit {
   ngOnDestroy() {
   }
 
-  save() {
+  async save() {
+    // this.api.getTest().subscribe(test => {
+    //   console.log(test);
+    // })
+
+    let req = this.api.getTest();
+    let res = await firstValueFrom(this.api.request(req))
+
     console.log(this.form.value);
   }
 
-  protected readonly FormControl = FormControl;
 }
